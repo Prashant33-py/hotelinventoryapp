@@ -1,0 +1,27 @@
+<h2 class="text-center">{{title}}</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Even/Odd</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Room Amenities</th>
+            <th>Check-In Date</th>
+            <th>Check-Out Date</th>
+            <th>Room Price</th>
+            <th>Select Room</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr [ngClass]="e? 'even' : 'odd'" *ngFor="let room of rooms; let e = even; let o = odd">
+            <td>{{e ? "Even":"Odd"}}</td>
+            <td>{{room.roomNo}}</td>
+            <td>{{room.roomType | uppercase}}</td>
+            <td>{{room.amenities}}</td>
+            <td>{{room.checkInTime | date}}</td>
+            <td>{{room.checkOutTime | date}}</td>
+            <td>{{room.price | currency :'INR'}}</td>
+            <td><button class="btn btn-primary" (click)="selectRoom(room)">Select</button></td>
+        </tr>
+    </tbody>
+</table>
